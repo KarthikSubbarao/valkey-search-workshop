@@ -49,6 +49,32 @@ jupyter notebook valkey_search_workshop.ipynb
 
 ---
 
+## Linux Setup
+
+### 1. Install Podman (or Docker)
+
+```bash
+# Ubuntu/Debian
+sudo apt install podman
+
+# Fedora/RHEL
+sudo dnf install podman
+```
+
+### 2. Install Jupyter
+
+```bash
+pip install jupyter
+```
+
+### 3. Run the workshop
+
+```bash
+cd valkey-search-workshop
+jupyter notebook valkey_search_workshop.ipynb
+```
+
+---
 ## Mac Setup
 
 ### 1. Install a container runtime
