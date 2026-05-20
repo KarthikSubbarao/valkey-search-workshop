@@ -36,7 +36,14 @@ cd valkey-search-workshop
 jupyter notebook valkey_search_workshop.ipynb
 ```
 
-The first cell in the notebook starts Valkey automatically via Docker.
+This opens the notebook in your browser (usually http://localhost:8888).
+
+### 4. Using the notebook
+
+- Click **Run** (▶) on each cell from top to bottom, or use **Shift+Enter**
+- The first cell starts Valkey automatically via Docker
+- Wait for each cell to finish (the `[*]` becomes `[1]`, `[2]`, etc.) before running the next
+- You can also use **Cell → Run All** to run everything at once
 
 ## What's Included
 
