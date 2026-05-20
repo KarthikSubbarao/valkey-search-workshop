@@ -4,20 +4,29 @@
 
 ## Prerequisites
 
-- Docker
+- A container runtime (Podman, Docker, or Colima)
 - Python 3.9+
 - Jupyter Notebook
 
 ## Windows Setup
 
-### 1. Install Docker
+### 1. Install a container runtime
 
-Download and install [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/). Make sure it's running (whale icon in system tray).
+**Option A: Podman (recommended, free, no license restrictions)**
+
+Download from https://podman.io/downloads, then in PowerShell:
+```
+podman machine init
+podman machine start
+```
+
+**Option B: Docker Desktop** (free for personal/education use)
+
+Download from https://www.docker.com/products/docker-desktop/
 
 ### 2. Install Python + Jupyter
 
-Download Python from https://www.python.org/downloads/ (check "Add to PATH" during install), then in Command Prompt or PowerShell:
-
+Download Python from https://www.python.org/downloads/ (check "Add to PATH" during install), then:
 ```
 pip install jupyter valkey pandas numpy
 ```
@@ -33,16 +42,24 @@ jupyter notebook valkey_search_workshop.ipynb
 
 ## Mac Setup
 
-### 1. Install Docker
+### 1. Install a container runtime
 
+**Option A: Podman (recommended, free, no license restrictions)**
 ```bash
-# Option A: Colima (free, open source)
+brew install podman
+podman machine init
+podman machine start
+```
+
+**Option B: Colima (free, open source)**
+```bash
 brew install docker colima
 colima start
-
-# Option B: Docker Desktop (free for personal/education use)
-# Download from https://www.docker.com/products/docker-desktop/
 ```
+
+**Option C: Docker Desktop** (free for personal/education use)
+
+Download from https://www.docker.com/products/docker-desktop/
 
 ### 2. Install Jupyter + dependencies
 
@@ -62,9 +79,8 @@ This opens the notebook in your browser (usually http://localhost:8888).
 ### 4. Using the notebook
 
 - Click **Run** (▶) on each cell from top to bottom, or use **Shift+Enter**
-- The first cell starts Valkey automatically via Docker
+- The first cell starts Valkey automatically
 - Wait for each cell to finish (the `[*]` becomes `[1]`, `[2]`, etc.) before running the next
-- You can also use **Cell → Run All** to run everything at once
 
 ## What's Included
 
@@ -84,7 +100,7 @@ workshop/
 
 | Time | Section | Topics |
 |:-----|:--------|:-------|
-| 0:00 | Setup | Docker, connect, verify |
+| 0:00 | Setup | Start Valkey, connect, verify |
 | 0:15 | Global Catalog | FT.CREATE, FT.SEARCH, TEXT/TAG/NUMERIC, Vector KNN, Hybrid |
 | 1:00 | Single-Slot | Per-user indexes, microsecond queries |
 | 1:30 | FT.AGGREGATE | Global user index, GROUPBY, REDUCE, trending |
@@ -94,6 +110,6 @@ workshop/
 ## Cleanup
 
 ```bash
-docker rm -f valkey
-colima stop  # optional, stops the Docker runtime
+podman rm -f valkey    # or: docker rm -f valkey
+podman machine stop    # optional
 ```
