@@ -28,7 +28,7 @@ Download from https://www.docker.com/products/docker-desktop/
 
 Download Python from https://www.python.org/downloads/ (check "Add to PATH" during install), then:
 ```
-pip install jupyter valkey pandas numpy
+pip install jupyter
 ```
 
 ### 3. Run the workshop
@@ -64,7 +64,7 @@ Download from https://www.docker.com/products/docker-desktop/
 ### 2. Install Jupyter + dependencies
 
 ```bash
-pip install jupyter valkey pandas numpy
+pip install jupyter
 ```
 
 ### 3. Run the workshop
