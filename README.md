@@ -4,17 +4,39 @@
 
 ## Prerequisites
 
-- Docker installed and running
+- Docker
 - Python 3.9+
+- Jupyter Notebook
 
-## Quick Start
+## Mac Setup
+
+### 1. Install Docker
 
 ```bash
-pip install jupyter
+# Install Docker CLI + Colima (lightweight Docker runtime for Mac)
+brew install docker colima
+
+# Start the Docker runtime
+colima start
+
+# Verify
+docker run --rm hello-world
+```
+
+### 2. Install Jupyter + dependencies
+
+```bash
+pip install jupyter valkey pandas numpy
+```
+
+### 3. Run the workshop
+
+```bash
+cd valkey-search-workshop
 jupyter notebook valkey_search_workshop.ipynb
 ```
 
-The notebook handles everything else (starting Valkey, installing deps, loading data).
+The first cell in the notebook starts Valkey automatically via Docker.
 
 ## What's Included
 
@@ -45,4 +67,5 @@ workshop/
 
 ```bash
 docker rm -f valkey
+colima stop  # optional, stops the Docker runtime
 ```
