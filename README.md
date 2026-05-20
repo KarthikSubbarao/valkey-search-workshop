@@ -36,14 +36,12 @@ jupyter notebook valkey_search_workshop.ipynb
 ### 1. Install Docker
 
 ```bash
-# Install Docker CLI + Colima (lightweight Docker runtime for Mac)
+# Option A: Colima (free, open source)
 brew install docker colima
-
-# Start the Docker runtime
 colima start
 
-# Verify
-docker run --rm hello-world
+# Option B: Docker Desktop (free for personal/education use)
+# Download from https://www.docker.com/products/docker-desktop/
 ```
 
 ### 2. Install Jupyter + dependencies
