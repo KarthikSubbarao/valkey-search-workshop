@@ -8,6 +8,29 @@
 - Python 3.9+
 - Jupyter Notebook
 
+## Windows Setup
+
+### 1. Install Docker
+
+Download and install [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/). Make sure it's running (whale icon in system tray).
+
+### 2. Install Python + Jupyter
+
+Download Python from https://www.python.org/downloads/ (check "Add to PATH" during install), then in Command Prompt or PowerShell:
+
+```
+pip install jupyter valkey pandas numpy
+```
+
+### 3. Run the workshop
+
+```
+cd valkey-search-workshop
+jupyter notebook valkey_search_workshop.ipynb
+```
+
+---
+
 ## Mac Setup
 
 ### 1. Install Docker
