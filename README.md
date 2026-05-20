@@ -4,36 +4,45 @@
 
 ## Prerequisites
 
-- A container runtime (Podman, Docker, or Colima)
+- A container runtime (Podman or Docker)
 - Python 3.9+
 - Jupyter Notebook
 
 ## Windows Setup
 
-### 1. Install a container runtime
+### 1. Install WSL2 (required for containers)
 
-**Option A: Podman (recommended, free, no license restrictions)**
-
-Download from https://podman-desktop.io/downloads, then in PowerShell:
+Open PowerShell **as Administrator** and run:
+```powershell
+wsl --install --no-distribution
 ```
+**Restart your computer.**
+
+### 2. Install Podman CLI
+
+Open a new PowerShell window:
+```powershell
+winget install RedHat.Podman
+```
+Close and reopen PowerShell to refresh the PATH.
+
+### 3. Initialize and start Podman
+
+```powershell
 podman machine init
 podman machine start
 ```
 
-**Option B: Docker Desktop** (free for personal/education use)
-
-Download from https://www.docker.com/products/docker-desktop/
-
-### 2. Install Python + Jupyter
+### 4. Install Python + Jupyter
 
 Download Python from https://www.python.org/downloads/ (check "Add to PATH" during install), then:
-```
+```powershell
 pip install jupyter
 ```
 
-### 3. Run the workshop
+### 5. Run the workshop
 
-```
+```powershell
 cd valkey-search-workshop
 jupyter notebook valkey_search_workshop.ipynb
 ```
@@ -44,24 +53,24 @@ jupyter notebook valkey_search_workshop.ipynb
 
 ### 1. Install a container runtime
 
-**Option A: Podman (recommended, free, no license restrictions)**
+**Option A: Podman (recommended)**
 ```bash
 brew install podman
 podman machine init
 podman machine start
 ```
 
-**Option B: Colima (free, open source)**
+**Option B: Colima + Docker CLI**
 ```bash
 brew install docker colima
 colima start
 ```
 
-**Option C: Docker Desktop** (free for personal/education use)
+**Option C: Docker Desktop**
 
 Download from https://www.docker.com/products/docker-desktop/
 
-### 2. Install Jupyter + dependencies
+### 2. Install Jupyter
 
 ```bash
 pip install jupyter
@@ -80,13 +89,13 @@ This opens the notebook in your browser (usually http://localhost:8888).
 
 - Click **Run** (▶) on each cell from top to bottom, or use **Shift+Enter**
 - The first cell starts Valkey automatically
-- Wait for each cell to finish (the `[*]` becomes `[1]`, `[2]`, etc.) before running the next
+- Wait for each cell to finish (the `[*]` becomes a number) before running the next
 
 ## What's Included
 
 ```
 workshop/
-├── valkey_search_workshop.ipynb    # The workshop
+├── valkey_search_workshop.ipynb    # The workshop notebook
 ├── README.md
 └── data/
     ├── catalog.csv                 # 1,053 movies with 768-dim vectors
