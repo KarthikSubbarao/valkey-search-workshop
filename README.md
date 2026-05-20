@@ -14,7 +14,7 @@
 
 **Option A: Podman (recommended, free, no license restrictions)**
 
-Download from https://podman.io/downloads, then in PowerShell:
+Download from https://podman-desktop.io/downloads, then in PowerShell:
 ```
 podman machine init
 podman machine start
