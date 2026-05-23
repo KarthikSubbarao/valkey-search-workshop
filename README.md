@@ -146,9 +146,9 @@ valkey-search-workshop/
 ├── valkey_search_workshop_solved.ipynb  # Reference (with solutions)
 ├── README.md
 └── data/
-    ├── catalog.csv                         # 1,053 movies with 768-dim vectors
-    ├── movies.csv                          # Movie metadata
-    ├── ratings.csv                         # 1,958 ratings from 20 users
+    ├── catalog.csv                         # Movies with 768-dim vectors
+    ├── movies.csv                          # Movie metadata (title, genres, tmdbId)
+    ├── ratings.csv                         # User ratings
     └── users.txt                           # Demo user IDs
 ```
 
