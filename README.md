@@ -4,114 +4,135 @@
 
 ## Prerequisites
 
+- Git
+- Python 3
 - A container runtime (Podman or Docker)
-- Python 3.9+
 - Jupyter Notebook
 
-## Windows Setup
+---
 
-### 1. Install WSL2 (required for containers)
+## Setup for Windows
 
-Open PowerShell **as Administrator** and run:
+### 1. Install Git and Python
+
+```powershell
+winget install --id Git.Git -e --source winget
+winget install Python.Python.3
+```
+
+Close and reopen PowerShell after installing.
+
+### 2. Install a container runtime
+
+**Podman (recommended, free, no license restrictions):**
+
+First install WSL2 (open PowerShell as Administrator):
 ```powershell
 wsl --install --no-distribution
 ```
-**Restart your computer.**
-
-### 2. Install Podman CLI
-
-Open a new PowerShell window:
+Restart your computer, then:
 ```powershell
 winget install RedHat.Podman
 ```
-Close and reopen PowerShell to refresh the PATH.
-
-### 3. Initialize and start Podman
-
+Close and reopen PowerShell, then:
 ```powershell
 podman machine init
 podman machine start
 ```
 
-### 4. Install Python + Jupyter
+**Or Docker Desktop** (free for personal/education use):
+Download from https://www.docker.com/products/docker-desktop/
 
-Download Python from https://www.python.org/downloads/ (check "Add to PATH" during install), then:
+### 3. Install Jupyter
+
 ```powershell
-pip install jupyter
+pip install notebook
 ```
 
-### 5. Run the workshop
+### 4. Clone and run the workshop
 
 ```powershell
+git clone https://github.com/KarthikSubbarao/valkey-search-workshop.git
 cd valkey-search-workshop
-jupyter notebook valkey_search_workshop.ipynb
+python -m notebook valkey_search_workshop.ipynb
 ```
 
 ---
 
-## Linux Setup
+## Setup for macOS
 
-### 1. Install Podman (or Docker)
+### 1. Install prerequisites
 
+You need `git`, `python3`, and a container runtime. If already installed, skip to step 3.
+
+Using Homebrew:
 ```bash
-# Ubuntu/Debian
-sudo apt install podman
-
-# Fedora/RHEL
-sudo dnf install podman
+brew install git python
 ```
 
-### 2. Install Jupyter
+### 2. Install a container runtime
 
-```bash
-pip install jupyter
-```
-
-### 3. Run the workshop
-
-```bash
-cd valkey-search-workshop
-jupyter notebook valkey_search_workshop.ipynb
-```
-
----
-## Mac Setup
-
-### 1. Install a container runtime
-
-**Option A: Podman (recommended)**
+**Podman (recommended):**
 ```bash
 brew install podman
 podman machine init
 podman machine start
 ```
 
-**Option B: Colima + Docker CLI**
+**Or Colima + Docker CLI:**
 ```bash
 brew install docker colima
 colima start
 ```
 
-**Option C: Docker Desktop**
-
+**Or Docker Desktop:**
 Download from https://www.docker.com/products/docker-desktop/
+
+### 3. Install Jupyter
+
+```bash
+pip install notebook
+```
+
+### 4. Clone and run the workshop
+
+```bash
+git clone https://github.com/KarthikSubbarao/valkey-search-workshop.git
+cd valkey-search-workshop
+python -m notebook valkey_search_workshop.ipynb
+```
+
+---
+
+## Setup for Linux
+
+### 1. Install Git, Python, and Podman
+
+```bash
+# Ubuntu/Debian
+sudo apt install git python3 python3-pip podman
+
+# Fedora/RHEL
+sudo dnf install git python3 python3-pip podman
+```
 
 ### 2. Install Jupyter
 
 ```bash
-pip install jupyter
+pip install notebook
 ```
 
-### 3. Run the workshop
+### 3. Clone and run the workshop
 
 ```bash
+git clone https://github.com/KarthikSubbarao/valkey-search-workshop.git
 cd valkey-search-workshop
-jupyter notebook valkey_search_workshop.ipynb
+python -m notebook valkey_search_workshop.ipynb
 ```
 
-This opens the notebook in your browser (usually http://localhost:8888).
+---
 
-### 4. Using the notebook
+## Using the notebook
 
 - Click **Run** (▶) on each cell from top to bottom, or use **Shift+Enter**
 - The first cell starts Valkey automatically
@@ -120,27 +141,16 @@ This opens the notebook in your browser (usually http://localhost:8888).
 ## What's Included
 
 ```
-workshop/
-├── valkey_search_workshop.ipynb    # The workshop notebook
+valkey-search-workshop/
+├── valkey_search_workshop.ipynb         # Workshop (with exercises)
+├── valkey_search_workshop_solved.ipynb  # Reference (with solutions)
 ├── README.md
 └── data/
-    ├── catalog.csv                 # 1,053 movies with 768-dim vectors
-    ├── movies.csv                  # Movie metadata
-    ├── ratings.csv                 # 1,958 ratings from 20 users
-    ├── links.csv                   # movieId → tmdbId mapping
-    └── users.txt                   # Demo user IDs
+    ├── catalog.csv                         # 1,053 movies with 768-dim vectors
+    ├── movies.csv                          # Movie metadata
+    ├── ratings.csv                         # 1,958 ratings from 20 users
+    └── users.txt                           # Demo user IDs
 ```
-
-## Workshop Outline
-
-| Time | Section | Topics |
-|:-----|:--------|:-------|
-| 0:00 | Setup | Start Valkey, connect, verify |
-| 0:15 | Global Catalog | FT.CREATE, FT.SEARCH, TEXT/TAG/NUMERIC, Vector KNN, Hybrid |
-| 1:00 | Single-Slot | Per-user indexes, microsecond queries |
-| 1:30 | FT.AGGREGATE | Global user index, GROUPBY, REDUCE, trending |
-| 2:00 | End-to-End | Full recommendation pipeline |
-| 2:30 | Exercises | Hands-on challenges |
 
 ## Cleanup
 
