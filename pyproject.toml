@@ -1,7 +1,7 @@
 [project]
 name = "valkey-search-workshop"
 version = "0.1.0"
-description = "Add your description here"
+description = "Hands-on workshop to power a movie streaming service application using valkey-search"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
