@@ -1,0 +1,13 @@
+[project]
+name = "valkey-search-workshop"
+version = "0.1.0"
+description = "Hands-on workshop to power a movie streaming service application using valkey-search"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "ipykernel>=7.2.0",
+    "jupyter>=1.1.1",
+    "numpy>=2.4.6",
+    "pandas>=3.0.3",
+    "valkey>=6.1.1",
+]
